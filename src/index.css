@@ -1,0 +1,8 @@
+@import "tailwindcss";
+label{
+    font-weight: bold;
+    color: black;
+}
+button{
+    cursor: pointer ;
+}
