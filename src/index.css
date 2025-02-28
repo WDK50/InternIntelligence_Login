@@ -6,3 +6,10 @@ label{
 button{
     cursor: pointer ;
 }
+@media (max-width: 768px) {
+    .mobile-rotate {
+      transform: rotate(90deg);
+      background-image: url('/images/Bg-R1.jpg'); /* New background image for mobile */
+    }
+  }
+  
