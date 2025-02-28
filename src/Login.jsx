@@ -15,17 +15,13 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [remember, setRemember] = useState(false);
-  const [error, setError] = useState({
-    email: '',
-    password: '',
-    general: ''
-  });
+  const [error, setError] = useState({ email: '', password: '', general: '' });
   const [showPassword, setShowPassword] = useState(false);
 
-  // Validate inputs before submitting
   const validateInputs = () => {
     let isValid = true;
     const newErrors = { email: '', password: '', general: '' };
+
     if (!email) {
       newErrors.email = 'Email is required!';
       isValid = false;
@@ -59,25 +55,13 @@ const Login = () => {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center p-4">
-      {/* Background Image Container */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center mobile-rotate" 
-        style={{ backgroundImage: "url('/images/Bg1.jpg')" }}
-      ></div>
-
-      {/* Form Container */}
-      <div className="relative z-10 bg-white bg-opacity-90 p-6 sm:p-8 rounded-lg shadow-md w-full max-w-sm sm:max-w-md transform transition duration-500 hover:scale-105">
+    <div className="relative min-h-screen flex items-center justify-center p-4 bg-[url('/images/Bg-R1.jpg')] bg-contain bg-center bg-no-repeat md:bg-[url('/images/Bg1.jpg')] md:bg-cover md:bg-no-repeat">
+      <div className="relative z-10 bg-white bg-opacity-90 p-6 sm:p-8 rounded-lg shadow-md w-full max-w-sm sm:max-w-md">
         <h2 className="text-xl sm:text-2xl font-bold text-center mb-4 sm:mb-6 text-gray-800">Login</h2>
-        {error.general && (
-          <div className="mb-4 text-red-600 text-center">{error.general}</div>
-        )}
+        {error.general && <div className="mb-4 text-red-600 text-center">{error.general}</div>}
         <form onSubmit={handleSubmit}>
-          {/* Email Field */}
           <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700 mb-1 font-semibold">
-              Email
-            </label>
+            <label htmlFor="email" className="block text-gray-700 mb-1 font-semibold">Email</label>
             <input
               type="email"
               id="email"
@@ -93,12 +77,8 @@ const Login = () => {
             />
             {error.email && <p className="text-red-500 text-xs mt-1">{error.email}</p>}
           </div>
-
-          {/* Password Field */}
           <div className="mb-4 relative">
-            <label htmlFor="password" className="block text-gray-700 mb-1 font-semibold">
-              Password
-            </label>
+            <label htmlFor="password" className="block text-gray-700 mb-1 font-semibold">Password</label>
             <input
               type={showPassword ? 'text' : 'password'}
               id="password"
@@ -112,50 +92,31 @@ const Login = () => {
                 }
               }}
             />
-            <div 
-              className="absolute inset-y-0 top-8 right-2 flex items-center cursor-pointer" 
-              onClick={() => setShowPassword(!showPassword)}
-            >
+            <div className="absolute inset-y-0 top-8 right-2 flex items-center cursor-pointer" onClick={() => setShowPassword(!showPassword)}>
               {showPassword ? <FaEyeSlash className="text-gray-500" /> : <FaEye className="text-gray-500" />}
             </div>
             {error.password && <p className="text-red-500 text-xs mt-1">{error.password}</p>}
           </div>
-
-          {/* Remember Me Checkbox */}
           <div className="flex items-center mb-4">
-            <input 
-              type="checkbox" 
-              id="remember" 
-              checked={remember} 
-              onChange={(e) => setRemember(e.target.checked)} 
-              className="mr-2" 
+            <input
+              type="checkbox"
+              id="remember"
+              checked={remember}
+              onChange={(e) => setRemember(e.target.checked)}
+              className="mr-2"
             />
-            <label htmlFor="remember" className="text-gray-700 text-sm">
-              Remember Me
-            </label>
+            <label htmlFor="remember" className="text-gray-700 text-sm">Remember Me</label>
           </div>
-
-          {/* Submit Button */}
-          <button 
-            type="submit" 
-            className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition-colors text-sm sm:text-base"
-          >
+          <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition-colors text-sm sm:text-base">
             Login
           </button>
-
-          {/* Navigation Links */}
           <div className="flex justify-between mt-3 text-xs sm:text-sm">
-            <a href="/forgot-password" className="text-blue-500 hover:underline">
-              Forgot Password?
-            </a>
-            <a href="/signup" className="text-blue-500 hover:underline">
-              Sign Up
-            </a>
+            <a href="/forgot-password" className="text-blue-500 hover:underline">Forgot Password?</a>
+            <a href="/signup" className="text-blue-500 hover:underline">Sign Up</a>
           </div>
         </form>
       </div>
     </div>
   );
 };
-
 export default Login;

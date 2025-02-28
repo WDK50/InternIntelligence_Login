@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
-import { auth } from './firebase'; 
+import { auth } from './firebase';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const SignUp = () => {
@@ -30,7 +30,7 @@ const SignUp = () => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(userCredential.user, { displayName: name });
-      navigate('/login'); // Redirect to login after successful sign-up
+      navigate('/login');
     } catch (err) {
       setError(err.message);
     } finally {
@@ -40,14 +40,14 @@ const SignUp = () => {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center p-4"
-      style={{
-        backgroundImage: "url('/images/Bg1.jpg')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
-      }}
+      className={`
+        min-h-screen flex items-center justify-center p-4
+        bg-[url('/images/Bg-R1.jpg')] bg-cover bg-center
+        md:bg-[url('/images/Bg1.jpg')] md:bg-cover md:bg-center
+        transition duration-500
+      `}
     >
-      <div className="bg-white bg-opacity-90 p-8 rounded-lg shadow-md w-full max-w-md transform transition duration-500 hover:scale-105">
+      <div className="bg-white bg-opacity-90 p-6 rounded-lg shadow-md w-full max-w-md transform hover:scale-105">
         <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">Sign Up</h2>
         {error && <div className="mb-4 text-red-600 text-center">{error}</div>}
         <form onSubmit={handleSubmit}>
